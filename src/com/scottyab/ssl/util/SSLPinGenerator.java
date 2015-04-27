@@ -117,13 +117,11 @@ public class SSLPinGenerator {
 				byte[] pubKey = cert.getPublicKey().getEncoded();
 				
 				
-				if (DEBUG){
 					//printing the cert details can help you identify which pin belongs to which certificate in the chain
 					Principal subject = cert.getSubjectDN();
 					if (subject!=null) {
 						System.out.println("subject :  " + subject.getName());
 					}
-				}
 				final byte[] hash = digest.digest(pubKey);
 				System.out.println("sha1-b64/"+new BASE64Encoder().encode(hash));
 				System.out.println("sha1/"+Byte.toString(hash);
