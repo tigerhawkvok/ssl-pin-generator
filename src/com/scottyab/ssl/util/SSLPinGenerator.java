@@ -125,7 +125,8 @@ public class SSLPinGenerator {
 					}
 				}
 				final byte[] hash = digest.digest(pubKey);
-				System.out.println("sha1/"+new BASE64Encoder().encode(hash));
+				System.out.println("sha1-b64/"+new BASE64Encoder().encode(hash));
+				System.out.println("sha1/"+Byte.toString(hash);
 			}
 		}
 	}
