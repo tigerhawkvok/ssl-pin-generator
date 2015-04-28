@@ -124,9 +124,21 @@ public class SSLPinGenerator {
 					}
 				final byte[] hash = digest.digest(pubKey);
 				System.out.println("sha1-b64/"+new BASE64Encoder().encode(hash));
-				System.out.println("sha1/"+Byte.toString(hash);
+				System.out.println("sha1/"+convertToHex(hash));
 			}
 		}
+          private String convertToHex(byte[] data) {
+    StringBuilder buf = new StringBuilder();
+    for (byte b : data) {
+      int halfbyte = (b >>> 4) & 0x0F;
+      int two_halfs = 0;
+      do {
+        buf.append((0 <= halfbyte) && (halfbyte <= 9) ? (char) ('0' + halfbyte) : (char) ('a' + (halfbyte - 10)));
+        halfbyte = b & 0x0F;
+      } while (two_halfs++ < 1);
+    }
+    return buf.toString();
+  }
 	}
 
 }
